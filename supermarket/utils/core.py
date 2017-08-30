@@ -1,5 +1,5 @@
-import json
 from functools import wraps
+from flask import Response, json
 
 
 def catch_exception():
@@ -13,3 +13,7 @@ def catch_exception():
 
         return decorated_func
     return decorator
+
+
+def return_json(data):
+    return Response(json.dumps(data), status=200, mimetype='application/json')
